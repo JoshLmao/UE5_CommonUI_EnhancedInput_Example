@@ -17,5 +17,6 @@ public:
 	FCommonButtonBaseClicked OnButtonClicked;
 
 private:
+	UFUNCTION()
 	void OnButtonBaseClicked_Internal(class UCommonButtonBase* Button);
 };

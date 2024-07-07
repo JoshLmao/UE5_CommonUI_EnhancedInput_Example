@@ -15,6 +15,7 @@ class UMainMenu_Activatable : public UCommonActivatableWidget
 
 public:
 	void NativeOnActivated() override;
+	void NativeOnInitialized() override;
 
 	class UWidget* NativeGetDesiredFocusTarget() const override;
 
@@ -27,4 +28,7 @@ private:
 
 	UFUNCTION()
 	void OnActionTriggered(const struct FInputActionInstance& Instance);
+
+	UFUNCTION()
+	void OnPlayButtonClicked(class UCommonButtonBase* Button);
 };

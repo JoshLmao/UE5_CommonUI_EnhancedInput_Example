@@ -22,6 +22,11 @@ void UMainMenu_Activatable::NativeOnActivated()
 	}
 }
 
+void UMainMenu_Activatable::NativeOnInitialized()
+{
+	PlayButton->OnButtonClicked.AddDynamic(this, &UMainMenu_Activatable::OnPlayButtonClicked);
+}
+
 UWidget* UMainMenu_Activatable::NativeGetDesiredFocusTarget() const
 {
 	return PlayButton;
@@ -37,4 +42,9 @@ void UMainMenu_Activatable::OnActionTriggered(const FInputActionInstance& Instan
 	*/
 
 	UE_LOG(LogTemp, Log, TEXT("KJHFGSUKHFD"));
+}
+
+void UMainMenu_Activatable::OnPlayButtonClicked(UCommonButtonBase* Button)
+{
+	UE_LOG(LogTemp, Log, TEXT("CLICKED"));
 }
