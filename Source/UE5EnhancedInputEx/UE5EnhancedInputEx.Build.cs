@@ -24,6 +24,7 @@ public class UE5EnhancedInputEx : ModuleRules
         // Uncomment if you are using Slate UI
         PrivateDependencyModuleNames.AddRange(new string[]
         {
+            "EnhancedInput",
             "Slate",
             "SlateCore"
         });
