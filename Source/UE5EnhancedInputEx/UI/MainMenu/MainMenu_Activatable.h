@@ -19,9 +19,12 @@ public:
 	class UWidget* NativeGetDesiredFocusTarget() const override;
 
 private:
-	UPROPERTY(EditAnywhere)
-	TSoftObjectPtr<class UInputMappingContext> InputMappingContext;
-
 	UPROPERTY(meta=(BindWidget))
-	class UButton* PlayButton;
+	class UMyCommonButton* PlayButton;
+
+	UPROPERTY(EditAnywhere)
+	class UInputAction* Action;
+
+	UFUNCTION()
+	void OnActionTriggered(const struct FInputActionInstance& Instance);
 };
