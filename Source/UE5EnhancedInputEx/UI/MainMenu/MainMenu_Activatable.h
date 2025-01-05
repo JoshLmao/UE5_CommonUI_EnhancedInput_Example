@@ -27,7 +27,7 @@ private:
 	class UInputAction* Action;
 
 	UFUNCTION()
-	void OnActionTriggered(const struct FInputActionInstance& Instance);
+	void OnActionTriggered();
 
 	UFUNCTION()
 	void OnPlayButtonClicked(class UCommonButtonBase* Button);

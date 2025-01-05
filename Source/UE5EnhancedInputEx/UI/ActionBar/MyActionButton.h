@@ -14,4 +14,8 @@ class UMyActionButton : public UCommonButtonBase, public ICommonBoundActionButto
 
 public:
 	virtual void SetRepresentedAction(struct FUIActionBindingHandle InBindingHandle);
+
+private:
+	UPROPERTY(meta=(BindWidget))
+	class UCommonTextBlock* ActionNameTextBlock;
 };

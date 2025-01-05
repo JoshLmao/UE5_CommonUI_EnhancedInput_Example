@@ -1,9 +1,9 @@
 #include "MainMenu_Activatable.h"
 
-#include <EnhancedInputSubsystems.h>
+#include "Input/CommonUIActionRouterBase.h"
+#include "Input/CommonUIInputTypes.h"
+
 #include <Components/Button.h>
-#include <EnhancedInputComponent.h>
-#include <InputAction.h>
 #include <UE5EnhancedInputEx/UI/Button/MyCommonButton.h>
 
 UMainMenu_Activatable::UMainMenu_Activatable()
@@ -13,17 +13,19 @@ UMainMenu_Activatable::UMainMenu_Activatable()
 
 void UMainMenu_Activatable::NativeOnActivated()
 {
-	auto EIC = Cast<UEnhancedInputComponent>(GetOwningPlayer()->InputComponent);
-	if (IsValid(EIC))
-	{
-		FScriptDelegate MyScriptDelegate;
-		MyScriptDelegate.BindUFunction(this, "OnActionTriggered");
-		EIC->BindAction(Action, ETriggerEvent::Triggered, this, &UMainMenu_Activatable::OnActionTriggered);
-	}
+	Super::NativeOnActivated();
+	
+	// if (auto* ActionRouter = UCommonUIActionRouterBase::Get(*this))
+	// {
+	// 	FSimpleDelegate Callback = FSimpleDelegate::CreateUObject(this, &UMainMenu_Activatable::OnActionTriggered);
+	// 	FBindUIActionArgs Args(Action, Callback);
+	// 	ActionRouter->RegisterUIActionBinding(*this, Args);
+	// }
 }
 
 void UMainMenu_Activatable::NativeOnInitialized()
 {
+	Super::NativeOnInitialized();
 	PlayButton->OnButtonClicked.AddDynamic(this, &UMainMenu_Activatable::OnPlayButtonClicked);
 }
 
@@ -32,7 +34,7 @@ UWidget* UMainMenu_Activatable::NativeGetDesiredFocusTarget() const
 	return PlayButton;
 }
 
-void UMainMenu_Activatable::OnActionTriggered(const FInputActionInstance& Instance)
+void UMainMenu_Activatable::OnActionTriggered()
 {
 	/*
 	FVector VectorValue = Instance.GetValue().Get<FVector>();
@@ -41,7 +43,7 @@ void UMainMenu_Activatable::OnActionTriggered(const FInputActionInstance& Instan
 	bool BoolValue = Instance.GetValue().Get<bool>();
 	*/
 
-	UE_LOG(LogTemp, Log, TEXT("KJHFGSUKHFD"));
+	UE_LOG(LogTemp, Log, TEXT("KJHFGS0UKHFD"));
 }
 
 void UMainMenu_Activatable::OnPlayButtonClicked(UCommonButtonBase* Button)
