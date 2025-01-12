@@ -12,6 +12,8 @@ class UMyCommonButton : public UCommonButtonBase
 	GENERATED_BODY()
 
 public:
+	UMyCommonButton();
+	
 	void NativeOnInitialized() override;
 
 	FCommonButtonBaseClicked OnButtonClicked;

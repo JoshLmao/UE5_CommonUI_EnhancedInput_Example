@@ -24,10 +24,10 @@ private:
 	class UMyCommonButton* PlayButton;
 
 	UPROPERTY(EditAnywhere)
-	class UInputAction* Action;
+	class UInputAction* CustomAction;
 
 	UFUNCTION()
-	void OnActionTriggered();
+	void OnCustomActionTriggered();
 
 	UFUNCTION()
 	void OnPlayButtonClicked(class UCommonButtonBase* Button);

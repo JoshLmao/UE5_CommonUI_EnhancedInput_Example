@@ -15,12 +15,12 @@ void UMainMenu_Activatable::NativeOnActivated()
 {
 	Super::NativeOnActivated();
 	
-	// if (auto* ActionRouter = UCommonUIActionRouterBase::Get(*this))
-	// {
-	// 	FSimpleDelegate Callback = FSimpleDelegate::CreateUObject(this, &UMainMenu_Activatable::OnActionTriggered);
-	// 	FBindUIActionArgs Args(Action, Callback);
-	// 	ActionRouter->RegisterUIActionBinding(*this, Args);
-	// }
+	if (auto* ActionRouter = UCommonUIActionRouterBase::Get(*this))
+	{
+		FSimpleDelegate Callback = FSimpleDelegate::CreateUObject(this, &UMainMenu_Activatable::OnCustomActionTriggered);
+		FBindUIActionArgs Args(CustomAction, Callback);
+		ActionRouter->RegisterUIActionBinding(*this, Args);
+	}
 }
 
 void UMainMenu_Activatable::NativeOnInitialized()
@@ -34,7 +34,7 @@ UWidget* UMainMenu_Activatable::NativeGetDesiredFocusTarget() const
 	return PlayButton;
 }
 
-void UMainMenu_Activatable::OnActionTriggered()
+void UMainMenu_Activatable::OnCustomActionTriggered()
 {
 	/*
 	FVector VectorValue = Instance.GetValue().Get<FVector>();
@@ -43,7 +43,7 @@ void UMainMenu_Activatable::OnActionTriggered()
 	bool BoolValue = Instance.GetValue().Get<bool>();
 	*/
 
-	UE_LOG(LogTemp, Log, TEXT("KJHFGS0UKHFD"));
+	UE_LOG(LogTemp, Log, TEXT("On Activatable CustomAction triggered"));
 }
 
 void UMainMenu_Activatable::OnPlayButtonClicked(UCommonButtonBase* Button)
