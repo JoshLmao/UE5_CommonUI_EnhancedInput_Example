@@ -14,14 +14,17 @@ class UMainMenu_Activatable : public UCommonActivatableWidget
 	UMainMenu_Activatable();
 
 public:
-	void NativeOnActivated() override;
-	void NativeOnInitialized() override;
+	virtual void NativeOnActivated() override;
+	virtual void NativeOnInitialized() override;
 
-	class UWidget* NativeGetDesiredFocusTarget() const override;
+	virtual class UWidget* NativeGetDesiredFocusTarget() const override;
 
 private:
-	UPROPERTY(meta=(BindWidget))
+	UPROPERTY(meta = (BindWidget))
 	class UMyCommonButton* PlayButton;
+
+	UPROPERTY(meta = (BindWidget))
+	class UMyCommonButton* SettingsButton;
 
 	UPROPERTY(EditAnywhere)
 	class UInputAction* CustomAction;
@@ -31,4 +34,7 @@ private:
 
 	UFUNCTION()
 	void OnPlayButtonClicked(class UCommonButtonBase* Button);
+
+	UFUNCTION()
+	void OnSettingsButtonClicked(class UCommonButtonBase* Button);
 };
