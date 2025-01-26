@@ -61,7 +61,6 @@ void UMainMenu_Activatable::OnSettingsButtonClicked(UCommonButtonBase* Button)
 {
 	if (auto MenuHUD = Cast<AMainMenuHUD>(GetOwningPlayer()->GetHUD()))
 	{
-		MenuHUD->OpenWidget(
-			FGameplayTag::RequestGameplayTag("UI.MainMenu.Settings"));
+		MenuHUD->OpenWidget(FGameplayTag::RequestGameplayTag("UI.MainMenu.Settings"));
 	}
 }
