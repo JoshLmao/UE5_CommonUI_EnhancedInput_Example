@@ -4,5 +4,5 @@
 
 void UMyActionButton::SetRepresentedAction(FUIActionBindingHandle InBindingHandle)
 {
-  ActionNameTextBlock->SetText(InBindingHandle.GetDisplayName());
+	ActionNameTextBlock->SetText(InBindingHandle.GetDisplayName());
 }

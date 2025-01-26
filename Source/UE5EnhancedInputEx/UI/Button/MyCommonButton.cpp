@@ -1,5 +1,7 @@
 #include "MyCommonButton.h"
 
+#include "CommonTextBlock.h"
+
 UMyCommonButton::UMyCommonButton()
 {
 	bDisplayInActionBar = true;
@@ -8,6 +10,12 @@ UMyCommonButton::UMyCommonButton()
 void UMyCommonButton::NativeOnInitialized()
 {
 	OnButtonBaseClicked.AddDynamic(this, &UMyCommonButton::OnButtonBaseClicked_Internal);
+}
+
+void UMyCommonButton::NativePreConstruct()
+{
+	Super::NativePreConstruct();
+	CustomTextBlock->SetText(ButtonText);
 }
 
 void UMyCommonButton::OnButtonBaseClicked_Internal(UCommonButtonBase* Button)

@@ -13,10 +13,20 @@ class UMyCommonButton : public UCommonButtonBase
 
 public:
 	UMyCommonButton();
-	
-	void NativeOnInitialized() override;
 
+	virtual void NativeOnInitialized() override;
+
+protected:
+	virtual void NativePreConstruct() override;
+
+public:
 	FCommonButtonBaseClicked OnButtonClicked;
+
+	UPROPERTY(EditAnywhere)
+	FText ButtonText;
+
+	UPROPERTY(meta = (BindWidget))
+	class UCommonTextBlock* CustomTextBlock;
 
 private:
 	UFUNCTION()

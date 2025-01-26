@@ -16,12 +16,15 @@ void UMainMenu_Activatable::NativeOnActivated()
 {
 	Super::NativeOnActivated();
 
-	if (auto* ActionRouter = UCommonUIActionRouterBase::Get(*this))
+	if (IsValid(CustomAction))
 	{
-		FSimpleDelegate Callback = FSimpleDelegate::CreateUObject(
-			this, &UMainMenu_Activatable::OnCustomActionTriggered);
-		FBindUIActionArgs Args(CustomAction, Callback);
-		ActionRouter->RegisterUIActionBinding(*this, Args);
+		if (auto* ActionRouter = UCommonUIActionRouterBase::Get(*this))
+		{
+			FSimpleDelegate Callback = FSimpleDelegate::CreateUObject(
+				this, &UMainMenu_Activatable::OnCustomActionTriggered);
+			FBindUIActionArgs Args(CustomAction, Callback);
+			ActionRouter->RegisterUIActionBinding(*this, Args);
+		}
 	}
 }
 
